@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the number</title>
+</head>
+<body>
+	<h1>Let's guess a number</h1>
+	<p>Choose your preferred number between 1-100</p>
+	<input type="number" name="user_number" id="user_number"><button onclick="buttonPressed()">Good luck!</button>
+	<script type="text/javascript">
+
+		var randomNumber = Math.ceil(Math.random()*100)	
+		var tries = 5;
+	/// 3 data types + 2 control flow
+	/// global vs local variable - what are the data that you need to store?
+	/// logic - using control flow
+	/// you will show using alert , next week or the following week, we will see how to show items on the page [ Number is too low. 4 tries remaining, Number is too high 3 tries remaining.. Sorry you lose, the number is 68, Congratulation you guessed the correct number]
+
+	function buttonPressed(){
+		tries--;
+			// Get the number entered inside input
+			var number = document.getElementById("user_number").value
+			// Show alert
+			// The logic will be here
+			// Focus on low, high or the right number
+			// The notion chances can only try 5 times if not it is game over
+			if (number < randomNumber){
+				if (tries == 0){
+					alert("Ooppss.. sorry. GAME OVER. The right number is "+randomNumber)
+					resetGame();
+				}
+				else{
+					alert("The number selected is low. Please try again."+tries+" more remaining")
+				}
+
+			}
+			else if (number > randomNumber){
+				if (tries == 0){
+					alert("Ooppss.. sorry. GAME OVER. The right number is "+randomNumber)
+					resetGame();
+				}
+				else{
+					alert("The number selected is high. Please try again."+tries+" more remaining")
+				}
+			}
+			else{
+				alert("Congrats! You guessed the right number. "+randomNumber)
+			}
+	}
+	function resetGame(){
+		randomNumber = Math.ceil(Math.random()*100)
+		tries = 5
+		document.getElementById("user_number").value = ""
+		alert("A new number has been chosen. Good luck!")
+
+	}
+	</script>
+</body>
+</html>
